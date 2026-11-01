@@ -7,7 +7,7 @@ const body = localFont({ src: "../../public/fonts/manrope.ttf", variable: "--fon
 
 export const metadata: Metadata = {
   title: "The Delay Date — Tannu, your wait is over.",
-  description: "One slightly overdue Ayush Tripathi. One very patient Tannu. A date, finally out of development.",
+  description: "One slightly overdue Aayush Tripathi. One very patient Tannu. A date, finally out of development.",
   robots: { index: false, follow: false, nocache: true },
   icons: { icon: "/icon.svg" },
 };

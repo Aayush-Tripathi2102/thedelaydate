@@ -237,7 +237,7 @@ The host ticket is the signature object: blush stock, original Sleeping Beauty S
 
 No evades only a mouse, stays clear of the Yes action and resets position on resize. Keyboard activation, touch, pen and reduced-motion activation decline normally and show “No booking, no pressure.” The sidecar's No preview is intentionally stationary: its CSS demonstrates the control, not the application-owned evasion logic.
 
-Success appears only after provider acceptance. Keep test/live wording distinct and retain the ink-coloured disclaimer: “Provider accepted ≠ inbox delivery. Ayush still needs to confirm the email landed.” The finish review verifies that disclaimer at 6.44:1 on orange and the field boundary at 4.15:1 against field fill / 3.95:1 against paper. These are reviewed combinations, not a blanket accessibility certification; real sending and inbox rendering remain unverified.
+Success appears only after provider acceptance. Keep test/live wording distinct and retain the ink-coloured disclaimer: “Provider accepted ≠ inbox delivery. Aayush still needs to confirm the email landed.” The finish review verifies that disclaimer at 6.44:1 on orange and the field boundary at 4.15:1 against field fill / 3.95:1 against paper. These are reviewed combinations, not a blanket accessibility certification; real sending and inbox rendering remain unverified.
 
 ## Do's and Don'ts
 

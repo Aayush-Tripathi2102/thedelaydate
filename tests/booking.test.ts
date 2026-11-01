@@ -1,5 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
 import { buildEmail, escapeHtml, recipientsFor } from "../src/lib/email";
 import { formatDay, formatTime, validateAnswers } from "../src/lib/date";
 import { POST } from "../src/app/api/book/route";
@@ -30,7 +31,7 @@ test("escapes all untrusted HTML characters", () => {
 });
 test("email includes all selections, date, pickup, reference, inline tables, and text alternative", () => {
   const email = buildEmail(answers, plan, "LATE-TEST", true);
-  assert.ok(email.subject.startsWith("[TEST — Ayush only]"));
+  assert.ok(email.subject.startsWith("[TEST — Aayush only]"));
   for (const text of ["1 November 2026", "5 PM", "Your hostel gate", "Italian", "Yessssss", "Vegetarian", "LATE-TEST"]) { assert.ok(email.html.includes(text)); assert.ok(email.text.includes(text)); }
   assert.ok(email.html.includes("Good food &amp; no naps &lt;please&gt;"));
   assert.ok(email.html.includes('role="presentation"'));
@@ -81,7 +82,7 @@ async function withMockProvider(mode: string, approved: string, responseStatus: 
   }
 }
 
-test("API test send targets only Ayush, and repeat identical submissions reuse idempotency key", async () => {
+test("API test send targets only Aayush, and repeat identical submissions reuse idempotency key", async () => {
   await withMockProvider("test", "false", 200, async calls => {
     const first = await POST(request(answers));
     assert.equal(first.status, 200);
@@ -168,4 +169,16 @@ test("Gmail setup test transport only receives the single specified test inbox",
       return { messageId: "mock", accepted: ["ayush@example.com"], rejected: [] };
     },
   });
+});
+
+test("website and email copy consistently spell the host’s name Aayush", () => {
+  for (const path of ["../src/components/booking-experience.tsx", "../src/app/layout.tsx", "../src/app/api/book/route.ts", "../src/lib/email.ts", "../src/lib/mailer.ts", "../scripts/send-test-email.ts"]) {
+    assert.doesNotMatch(readFileSync(new URL(path, import.meta.url), "utf8"), /\b(?:Ayush|AYUSH)\b/, `Incorrect name in ${path}`);
+  }
+  for (const mode of [false, true]) {
+    const email = buildEmail(answers, plan, "NAME-CHECK", mode);
+    assert.ok(email.html.includes("Aayush Tripathi"));
+    assert.ok(email.text.includes("Aayush Tripathi"));
+    assert.doesNotMatch(`${email.subject}\n${email.text}\n${email.html}`, /\b(?:Ayush|AYUSH)\b/);
+  }
 });

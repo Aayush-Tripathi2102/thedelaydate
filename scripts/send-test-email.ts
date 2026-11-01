@@ -15,7 +15,7 @@ async function main() {
   }
   const plan = getPlan();
   const answers = {
-    expectations: "Good food, no naps, and please be on time for once.\nThis is Ayush’s setup test, not Tannu’s actual submission.",
+    expectations: "Good food, no naps, and please be on time for once.\nThis is Aayush’s setup test, not Tannu’s actual submission.",
     cuisine: "Italian",
     excitement: "Yessssss",
     dietary: "Sample food notes for checking the email layout.",

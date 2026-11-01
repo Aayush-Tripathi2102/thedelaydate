@@ -16,9 +16,9 @@ export function missingEmailConfiguration() {
   if (emailProvider() === "gmail") {
     return process.env.GMAIL_USER && process.env.GMAIL_APP_PASSWORD?.replace(/\s/g, "")
       ? null
-      : "Ayush needs to connect the Gmail app password. Nothing has been sent.";
+      : "Aayush needs to connect the Gmail app password. Nothing has been sent.";
   }
-  return process.env.RESEND_API_KEY ? null : "Ayush needs to add the Resend API key. Nothing has been sent.";
+  return process.env.RESEND_API_KEY ? null : "Aayush needs to add the Resend API key. Nothing has been sent.";
 }
 
 function gmailTransport() {

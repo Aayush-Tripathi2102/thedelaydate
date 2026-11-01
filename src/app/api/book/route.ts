@@ -23,7 +23,7 @@ export async function POST(request: Request) {
   const address = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "local";
   const rateKey = createHash("sha256").update(address).digest("hex");
   const attempt = attempts.get(rateKey) || { count: 0, expires: now + 60_000 };
-  if (attempt.count >= 5) return Response.json({ error: "Five attempts in a minute? Even Ayush needs a breather. Try again in a minute." }, { status: 429, headers: { "Retry-After": "60" } });
+  if (attempt.count >= 5) return Response.json({ error: "Five attempts in a minute? Even Aayush needs a breather. Try again in a minute." }, { status: 429, headers: { "Retry-After": "60" } });
   attempt.count++;
   attempts.set(rateKey, attempt);
 
@@ -47,6 +47,6 @@ export async function POST(request: Request) {
     return Response.json({ reference, mode, accepted: true });
   } catch {
     console.error("Booking email configuration or transport failure");
-    return Response.json({ error: "The booking desk couldn’t confirm every email. Your answers are still here. Check your inbox before retrying; some copies may already be on their way. Or call Ayush." }, { status: 502 });
+    return Response.json({ error: "The booking desk couldn’t confirm every email. Your answers are still here. Check your inbox before retrying; some copies may already be on their way. Or call Aayush." }, { status: 502 });
   }
 }

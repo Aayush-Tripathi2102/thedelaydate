@@ -26,8 +26,8 @@ The user specified **today**, recorded as **1 November 2026**, **5 PM, Asia/Kolk
 
 1. Enable Google **2-Step Verification**, then create an app password at https://myaccount.google.com/apppasswords. If unavailable, check Google account policy or use the optional Resend provider with a verified domain.
 2. Set `EMAIL_PROVIDER=gmail`, `GMAIL_USER=aayushtripathi2102@gmail.com`, and `GMAIL_APP_PASSWORD` in `.env.local`. Use the app password, **not your normal Google password**. Credentials stay server-side and out of Git.
-3. Run `bun run test:email`. It verifies Gmail authentication and sends one sample to Ayush only, regardless of live-mode settings. Check inbox/spam before enabling live mode. Gmail has no guaranteed retry deduplication.
-4. Set the live configuration below and rebuild/restart. `Book My Date` will address both Ayush and Shreya in one SMTP transaction. Test banners disappear automatically from the website, subject, and email in live mode.
+3. Run `bun run test:email`. It verifies Gmail authentication and sends one sample to Aayush only, regardless of live-mode settings. Check inbox/spam before enabling live mode. Gmail has no guaranteed retry deduplication.
+4. Set the live configuration below and rebuild/restart. `Book My Date` will address both Aayush and Shreya in one SMTP transaction. Test banners disappear automatically from the website, subject, and email in live mode.
 
 For the optional Resend provider, set `EMAIL_PROVIDER=resend`, `RESEND_API_KEY`, and `EMAIL_FROM`. `onboarding@resend.dev` only sends to the Resend account owner; emailing Shreya requires a verified sender domain.
 
@@ -51,7 +51,7 @@ AYUSH_EMAIL=aayushtripathi2102@gmail.com
 SHREYA_EMAIL=shreya.deepak2023@vitstudent.ac.in
 ```
 
-Rebuild/redeploy after changing configuration. A subsequent booking sends to both addresses, without TEST labels. Deploying alone never enables live sends; live mode without approval fails closed. Recipient addresses are read on the server, not accepted from the browser. The owner has approved live sending and enabled the local live view. Actual Gmail credentials are still required before sending works; use the dedicated Ayush-only test command to check them first.
+Rebuild/redeploy after changing configuration. A subsequent booking sends to both addresses, without TEST labels. Deploying alone never enables live sends; live mode without approval fails closed. Recipient addresses are read on the server, not accepted from the browser. The owner has approved live sending and enabled the local live view. Actual Gmail credentials are still required before sending works; use the dedicated Aayush-only test command to check them first.
 
 ## Safeguards and limitations
 
@@ -59,7 +59,7 @@ Rebuild/redeploy after changing configuration. A subsequent booking sends to bot
 - Same-origin checks and a best-effort, **instance-local** 5-attempts/minute throttle. Before broadly sharing publicly, enable Vercel firewall/rate limiting or a distributed limiter. Origin checks alone are not authentication. The invitation is not password-protected.
 - Gmail uses stable message IDs, but **SMTP does not guarantee deduplication**. On a timeout or partial-recipient failure, check inboxes before retrying. Optional Resend uses 24-hour idempotency keys. There is no persistent booking database or cancellation system.
 - Answers are kept in session storage for that browser tab and clear on successful submission/tab closure. Email is the durable reservation. No guest email input prevents this becoming an arbitrary mail relay.
-- Search indexing disabled, but **noindex is not privacy protection**. Do not publish the invitation URL broadly; use hosting access protection if desired. Phone and Ayush’s contact email are intentionally visible. Configured recipient addresses are not accepted from the browser.
+- Search indexing disabled, but **noindex is not privacy protection**. Do not publish the invitation URL broadly; use hosting access protection if desired. Phone and Aayush’s contact email are intentionally visible. Configured recipient addresses are not accepted from the browser.
 - The escaping No is a mouse-pointer joke, stays within the viewport and resets on resize. Keyboard, touch, and pen users can activate No for a genuine decline; reduced-motion users get a stable No button. All form choices are native keyboard-accessible radios.
 - Email delivery and deployment require your accounts. Tests use mocks, not live recipient sends.
 

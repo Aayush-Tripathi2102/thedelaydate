@@ -29,7 +29,7 @@ async function main() {
     if (provider === "gmail") await verifyGmailConnection();
     const id = await sendReservationEmail(email, [recipient], `setup-${digest}`);
     console.log(`Provider accepted the test via ${provider}. Email ID: ${id}. Reference: ${reference}.`);
-    console.log("Check your inbox and spam folder. Acceptance is not proof of delivery. Shreya has NOT been emailed; live mode has NOT been enabled.");
+    console.log("Check your inbox and spam folder. Acceptance is not proof of delivery. Shreya has NOT been emailed by this test; this command has not changed the website’s live-mode settings.");
   } catch {
     console.error("Could not confirm the test email. For Gmail, enable 2-Step Verification and use a Google app password, not your normal password. Check your inbox before retrying; Gmail does not guarantee retry deduplication.");
     process.exitCode = 1;
